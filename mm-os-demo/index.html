@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MM OS | Demonstração Visual</title>
+<style>
+:root{--a:#ff6a00;--bg:#0e1013;--panel:#171b20;--panel2:#1d2229;--ink:#f5f5f5;--muted:#a8afb8;--line:#30363d;--green:#50db9d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.45}
+button,input{font:inherit}button{cursor:pointer}.layout{display:grid;grid-template-columns:244px 1fr;min-height:100vh}
+aside{background:#121519;border-right:1px solid var(--line);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:23px 13px}
+.brand{font-size:21px;font-weight:900;letter-spacing:.2px;padding:4px 11px 8px}.brand b{color:var(--a)}
+.brand small{font-size:11px;display:block;color:var(--muted);font-weight:500;letter-spacing:1.5px;margin-top:2px}
+.navtitle{color:#767f89;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;padding:24px 13px 7px}
+.nav{display:flex;flex-direction:column;gap:4px}.nav button{border:1px solid transparent;color:#c2c7ce;background:transparent;border-radius:10px;text-align:left;padding:11px 13px;display:flex;align-items:center;gap:12px;font-weight:600;font-size:13px}
+.nav button:hover,.nav button.active{background:#29221c;color:white;border-color:#734326}.nav button.active i{color:var(--a)}
+.nav i{font-size:17px;font-style:normal;min-width:19px}.sidebarbottom{margin-top:auto;border-top:1px solid var(--line);padding:17px 12px 0;color:var(--muted);font-size:12px}
+main{min-width:0;padding:28px clamp(18px,4vw,60px) 70px;max-width:1420px;width:100%;margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.eyebrow{color:var(--a);font-size:11px;letter-spacing:1.8px;font-weight:900;text-transform:uppercase}
+h1{font-size:clamp(29px,3vw,43px);letter-spacing:-1.25px;margin:8px 0 5px;line-height:1.12}h2{font-size:20px;letter-spacing:-.45px;margin:0 0 14px}h3{font-size:15px;margin:0 0 6px}.muted{color:var(--muted)}
+.chip{border:1px solid #633d24;color:#ffb277;background:#281d16;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:800}
+.note{background:#302014;border:1px solid #75431c;color:#ffd2ae;font-size:12px;padding:11px 14px;border-radius:11px;margin-bottom:20px}
+.hero{background:radial-gradient(circle at 84% 20%,#56301a,transparent 42%),linear-gradient(120deg,#23201d,#161b20 65%);border:1px solid #64442f;border-radius:18px;padding:26px 28px;margin-bottom:22px}
+.hero p{max-width:660px;color:#c3c3c3;margin-bottom:18px}.btn{background:var(--a);border:0;color:#17120e;border-radius:10px;padding:11px 16px;font-weight:900}.btn.secondary{background:#272d34;color:#f1f1f1;border:1px solid var(--line)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:21px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kpi .lbl{color:var(--muted);font-size:12px}.kpi strong{font-size:29px;display:block;margin:5px 0 2px;letter-spacing:-.5px}.kpi .sub{font-size:11px;color:#7bd9ac}
+.section{margin-top:25px}.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;text-align:left;color:var(--ink)}.tile:hover{border-color:#ff6a0077;background:#1d2023}.tile .emoji{font-size:25px;display:block;margin-bottom:12px}.tile p{font-size:12px;color:var(--muted);margin:0}
+.page{display:none}.page.active{display:block}.label{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:8px;display:block}
+.search{display:flex;gap:9px;align-items:center;margin-top:15px}.search input{flex:1;min-width:0;border-radius:10px;background:#0f1317;color:white;border:1px solid #3a434b;padding:14px;outline:none}.search input:focus{border-color:var(--a)}
+.suggest{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.pill{border:1px solid #43484d;border-radius:999px;color:#cad0d7;background:#21252b;padding:8px 11px;font-size:12px}
+.answer{border:1px solid #684021;background:#231c16;border-radius:14px;padding:22px;margin-top:20px}.answer.hidden{display:none}.answer .tag{color:var(--a);font-size:11px;font-weight:900;letter-spacing:1px}
+.answer p{margin:8px 0 13px}.answer ol{padding-left:19px}.answer li{margin:6px 0}
+.bar{height:12px;background:#30343a;border-radius:99px;overflow:hidden}.bar div{height:100%;background:linear-gradient(90deg,#ed5900,#ff9d40);border-radius:99px}
+.tablewrap{overflow:auto}.table{border-collapse:collapse;width:100%;min-width:520px;text-align:left;font-size:13px}.table th,.table td{padding:12px;border-bottom:1px solid #30363b}.table th{font-size:11px;color:#949eaa;text-transform:uppercase;letter-spacing:1px}.state{display:inline-block;padding:5px 9px;border-radius:40px;background:#173d2c;color:#8ce0b2;font-size:11px;font-weight:700}.pending{background:#4a3417;color:#f6c676}
+.steps{display:grid;gap:10px}.step{padding:14px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;gap:12px;background:#181c21}.step b{color:var(--a);font-size:15px}
+a{color:#ffab72}footer{font-size:11px;color:#808a96;margin-top:38px;border-top:1px solid var(--line);padding-top:17px}
+@media(max-width:950px){.layout{grid-template-columns:1fr}aside{height:auto;position:static;padding:13px;display:block}.navtitle,.sidebarbottom{display:none}.nav{flex-direction:row;overflow-x:auto;padding-bottom:5px}.nav button{white-space:nowrap}.grid,.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:20px}}
+@media(max-width:590px){.grid,.grid.two,.tiles{grid-template-columns:1fr}.hero{padding:20px}.search{flex-direction:column;align-items:stretch}.search input{width:100%}h1{font-size:30px}}
+</style></head><body>
+<div class="layout"><aside>
+<div class="brand">MM <b>OS</b><small>SISTEMA OPERACIONAL</small></div>
+<div class="navtitle">Demonstração</div>
+<div class="nav">
+<button class="active" data-page="inicio"><i>⌂</i> Visão geral</button>
+<button data-page="consultor"><i>⌕</i> Consultor MM</button>
+<button data-page="academia"><i>▣</i> Academia MM</button>
+<button data-page="processos"><i>☷</i> Processos</button>
+<button data-page="metas"><i>◷</i> Metas da equipe</button>
+<button data-page="influenciadores"><i>♧</i> Influenciadores</button>
+<button data-page="fidelidade"><i>☆</i> Fidelidade</button>
+</div>
+<div class="sidebarbottom">Protótipo público para apresentação<br>Sem login · Sem dados reais</div>
+</aside>
+<main>
+<header><div><div class="eyebrow">MM SUPLEMENTOS / VISÃO CONCEITUAL</div><h1 id="pagetitle">Bem-vinda ao MM OS.</h1><div class="muted" id="pagesub">Um só lugar para aprender, consultar e executar.</div></div><span class="chip">◉ DEMONSTRAÇÃO V0.3</span></header>
+<div class="note"><b>Atenção:</b> esta é uma apresentação visual, com números e casos fictícios. Não consulta o estoque, clientes, metas nem a API real da Olist. Não substitui o sistema em desenvolvimento.</div>
+<section id="inicio" class="page active">
+<div class="hero"><span class="eyebrow">A CENTRAL DA MM</span><h2 style="font-size:28px;margin:8px 0">Mais clareza no atendimento. Mais organização na operação.</h2><p>Imagine a Tayssa encontrando uma resposta de venda em segundos, a Duda acompanhando as rotinas e todos consultando os mesmos processos e treinamentos.</p><button class="btn" data-go="consultor">Testar o Consultor →</button></div>
+<div class="grid"><div class="card kpi"><span class="lbl">Atendimento</span><strong>Busca rápida</strong><span class="sub">Orientações comerciais aprovadas</span></div><div class="card kpi"><span class="lbl">Aprendizado</span><strong>Academia</strong><span class="sub">Treinar com autonomia</span></div><div class="card kpi"><span class="lbl">Gestão</span><strong>Rotinas</strong><span class="sub">Papéis e responsabilidades</span></div></div>
+<div class="section"><h2>Áreas do MM OS</h2><div class="tiles">
+<button class="tile" data-go="consultor"><span class="emoji">🔎</span><h3>Consultor MM</h3><p>Pesquisar objetivos, dúvidas e alternativas quando faltar um produto.</p></button>
+<button class="tile" data-go="academia"><span class="emoji">🎓</span><h3>Academia MM</h3><p>Materiais, treinamentos, avaliações e aprendizado contínuo.</p></button>
+<button class="tile" data-go="processos"><span class="emoji">📋</span><h3>Processos</h3><p>Instruções de atendimento, caixa, trocas e pós-venda.</p></button>
+<button class="tile" data-go="metas"><span class="emoji">📈</span><h3>Metas</h3><p>Progresso diário e mensal com acompanhamento visual.</p></button>
+<button class="tile" data-go="influenciadores"><span class="emoji">🤝</span><h3>Parcerias</h3><p>Avaliação, entregas e desempenho dos influenciadores.</p></button>
+<button class="tile" data-go="fidelidade"><span class="emoji">⭐</span><h3>Fidelidade</h3><p>Cartão físico com histórico e controle digital futuro.</p></button>
+</div></div></section>
+<section id="consultor" class="page">
+<div class="hero"><span class="eyebrow">PRIMEIRO MÓDULO PLANEJADO</span><h2>Uma dúvida no balcão? Pesquise aqui.</h2><p>Busca demonstrativa por situações. As recomendações reais dependerão de fichas aprovadas e de dados atualizados da Olist.</p>
+<label class="label" for="busca">O que o cliente precisa?</label>
+<div class="search"><input id="busca" placeholder="Ex.: cliente quer ganhar massa com orçamento baixo" autocomplete="off"><button class="btn" id="buscar">Pesquisar</button></div>
+<div class="suggest"><button class="pill" data-query="ganhar massa">Ganhar massa</button><button class="pill" data-query="produto acabou">Produto em falta</button><button class="pill" data-query="sem lactose">Intolerância à lactose</button><button class="pill" data-query="comparar creatina">Comparar creatinas</button></div></div>
+<div class="answer hidden" id="resposta" aria-live="polite"></div>
+<div class="card"><h3>Como a resposta oficial funcionará</h3><div class="steps"><div class="step"><b>01</b> Entender objetivo, orçamento e restrições</div><div class="step"><b>02</b> Exibir indicação principal aprovada e motivo</div><div class="step"><b>03</b> Mostrar alternativas compatíveis e disponibilidade confirmada</div><div class="step"><b>04</b> Sugerir uma explicação clara, sem promessas de saúde</div></div></div>
+</section>
+<section id="academia" class="page">
+<div class="hero"><span class="eyebrow">APRENDIZADO CONTÍNUO</span><h2>Academia MM</h2><p>Treinamento comercial, conhecimento sobre suplementos, simulações de atendimento e avaliações. O treinamento inicial já existe em um site separado.</p><a class="btn" style="display:inline-block;text-decoration:none" href="https://mmsuplementospacaja.github.io/academia-mm/" target="_blank" rel="noopener">Abrir Academia MM ↗</a></div>
+<div class="grid"><div class="card"><h3>Atendimento consultivo</h3><p class="muted">Entender a necessidade, orientar e conduzir a venda.</p><span class="state">Material existente</span></div><div class="card"><h3>Conhecimento de produtos</h3><p class="muted">Estudar composição, categorias e diferenças verificadas.</p><span class="state pending">Planejado</span></div><div class="card"><h3>Treino de gestão</h3><p class="muted">Evoluir responsabilidades e habilidades de liderança.</p><span class="state pending">Planejado</span></div></div>
+</section>
+<section id="processos" class="page"><div class="hero"><span class="eyebrow">PADRONIZAÇÃO</span><h2>Processos que qualquer pessoa consegue encontrar.</h2><p>Instruções curtas e aprovadas, associadas aos responsáveis e às tarefas do Trello.</p></div><div class="grid two"><div class="card"><h3>🛍️ Atendimento e venda</h3><p class="muted">Abertura, perguntas ao cliente, conferência de produto e fechamento.</p><span class="state pending">Estrutura demonstrativa</span></div><div class="card"><h3>📦 Recebimento e estoque</h3><p class="muted">Conferência, divergências, organização e registro no ERP.</p><span class="state pending">Estrutura demonstrativa</span></div><div class="card"><h3>💬 WhatsApp e pós-venda</h3><p class="muted">Etiquetas, contatos, acompanhamento e encaminhamento.</p><span class="state pending">Estrutura demonstrativa</span></div><div class="card"><h3>✅ Rotina da equipe</h3><p class="muted">Abertura, prioridades, checkpoints e encerramento.</p><span class="state pending">Estrutura demonstrativa</span></div></div></section>
+<section id="metas" class="page"><div class="hero"><span class="eyebrow">VISÃO DA EQUIPE</span><h2>Metas sem precisar criar imagem toda hora.</h2><p>Exemplo fictício de como a Duda poderá visualizar o desempenho e compartilhar o andamento com a equipe.</p></div>
+<div class="grid"><div class="card kpi"><div class="lbl">Vendido no mês · EXEMPLO</div><strong>R$ 12.400</strong><div class="sub">Simulação</div></div><div class="card kpi"><div class="lbl">Meta do mês · EXEMPLO</div><strong>R$ 18.000</strong><div class="sub">Simulação</div></div><div class="card kpi"><div class="lbl">Faltante · EXEMPLO</div><strong>R$ 5.600</strong><div class="sub">Simulação</div></div></div>
+<div class="card section"><h3>Progresso ilustrativo</h3><div class="bar"><div style="width:68.9%"></div></div><p class="muted">68,9% da meta (dados fictícios). Na versão real haverá checkpoints por horário e exportação visual.</p><button class="btn secondary" id="meta-demo">Ver mensagem de exemplo</button><p id="meta-msg" class="muted" aria-live="polite"></p></div></section>
+<section id="influenciadores" class="page"><div class="hero"><span class="eyebrow">PARCERIAS</span><h2>Influenciadores e profissionais</h2><p>Controle de candidatos, requisitos, publicações, cupons, desempenho e custo real — conforme política a ser aprovada.</p></div>
+<div class="card"><h3>Exemplo fictício de acompanhamento</h3><div class="tablewrap"><table class="table"><thead><tr><th>Parceiro</th><th>Conteúdo</th><th>Entregas</th><th>Situação</th></tr></thead><tbody><tr><td>Parceiro fictício A</td><td>Stories</td><td>8 de 12</td><td><span class="state pending">Em andamento</span></td></tr><tr><td>Parceiro fictício B</td><td>Reels</td><td>2 de 2</td><td><span class="state">Conferir resultado</span></td></tr></tbody></table></div></div>
+<div class="card section"><h3>Requisitos para novos parceiros</h3><p class="muted">Afinidade com o público da MM, alcance local, engajamento autêntico, qualidade, reputação, compromisso e custo-benefício. Profissionais regulamentados exigem revisão ética específica.</p></div>
+</section>
+<section id="fidelidade" class="page"><div class="hero"><span class="eyebrow">RELACIONAMENTO</span><h2>Cartão fidelidade físico + controle digital.</h2><p>O cliente continua com o cartão impresso. A equipe acompanha pontos, histórico e resgates em um ambiente protegido.</p></div><div class="card"><h3>Como imaginamos o funcionamento</h3><div class="steps"><div class="step"><b>01</b> Registrar uma compra qualificada</div><div class="step"><b>02</b> Registrar o ponto no histórico digital e no cartão físico</div><div class="step"><b>03</b> Consultar saldo e pontos próximos do resgate</div><div class="step"><b>04</b> Conferir e registrar resgate aprovado</div></div><p class="muted">Ainda não há cadastro de clientes neste protótipo. Regras de pontuação serão confirmadas antes do desenvolvimento.</p></div></section>
+<footer>MM OS • Demonstração visual pública, sem integração com Olist ou banco privado. Interface conceitual para apresentação à equipe. © MM Suplementos.</footer>
+</main></div>
+<script>
+const titles={inicio:["Bem-vinda ao MM OS.","Um só lugar para aprender, consultar e executar."],consultor:["Consultor de Atendimento","Respostas rápidas para dúvidas reais de balcão."],academia:["Academia MM","Aprendizado para quem está na linha de frente."],processos:["Processos e rotinas","O jeito certo de executar, sempre à mão."],metas:["Metas da equipe","Visibilidade sobre o progresso sem retrabalho."],influenciadores:["Influenciadores & parcerias","Organização, requisitos e acompanhamento."],fidelidade:["Fidelidade MM","Cartão físico, histórico digital."]};
+function navigate(id){if(!titles[id])return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id===id));document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===id));document.getElementById("pagetitle").textContent=titles[id][0];document.getElementById("pagesub").textContent=titles[id][1];window.scrollTo({top:0,behavior:"smooth"});}
+document.querySelectorAll("[data-page],[data-go]").forEach(b=>b.addEventListener("click",()=>navigate(b.dataset.page||b.dataset.go)));
+const answers=[
+ {keys:["massa","hipertrofia","ganhar peso"],title:"Objetivo: ganho de massa",points:["Perguntar sobre rotina alimentar, tipo de treino e orçamento.","A indicação dependerá da composição aprovada, dos objetivos comerciais e das necessidades identificadas.","Conferir preços e estoque atualizados antes de apresentar qualquer opção."],tip:"Exemplo de abordagem: “Para te mostrar uma opção que faça sentido, posso entender melhor seu treino e sua alimentação?”"},
+ {keys:["acabou","falta","esgotado","substitut","sem estoque"],title:"Produto indisponível: como substituir",points:["Confirmar qual apresentação ou característica o cliente buscava.","Comparar alternativas somente quando composição, quantidade e adequação forem verificadas.","Nunca afirmar que há estoque sem conferir a Olist."],tip:"Exemplo de abordagem: “Esse item não está confirmado agora; posso verificar uma alternativa equivalente para você?”"},
+ {keys:["lactose","alergia","intoler"],title:"Dúvida sobre lactose ou alergias",points:["Não presumir que “whey isolado” seja automaticamente apropriado para qualquer pessoa.","Consultar o rótulo, ingredientes e advertências do produto específico.","Em alergias, condições médicas ou dúvidas clínicas, encaminhar a profissional habilitado."],tip:"Exemplo de abordagem: “Vamos conferir o rótulo do produto e as restrições antes de escolher.”"},
+ {keys:["creatina","comparar","marca"],title:"Comparação de creatinas",points:["Confirmar composição, pureza declarada no rótulo, apresentação e preço por porção.","Não afirmar equivalência apenas porque dois produtos têm nomes ou embalagens parecidos.","Escolher alternativas aprovadas e consultar estoque antes de informar valores."],tip:"Exemplo de abordagem: “Posso comparar composição e custo por porção para você decidir melhor.”"}
+];
+function query(q){const val=(q||"").toLocaleLowerCase("pt-BR");const found=answers.find(a=>a.keys.some(k=>val.includes(k)));const el=document.getElementById("resposta");el.classList.remove("hidden");const title=found?.title||"Pesquisa de atendimento";const pts=found?.points||["O sistema definitivo consultará a biblioteca aprovada da MM.","Ainda não há uma resposta comercial validada para esta dúvida.","Encaminhe a consulta à Duda antes de recomendar um produto."];const tip=found?.tip||"Nesta demonstração não existe IA conectada nem catálogo real.";el.replaceChildren();const tag=document.createElement("div");tag.className="tag";tag.textContent="RESPOSTA DEMONSTRATIVA • NÃO É INDICAÇÃO DE PRODUTO";el.appendChild(tag);const h=document.createElement("h3");h.style.marginTop="10px";h.textContent=title;el.appendChild(h);const ol=document.createElement("ol");pts.forEach(t=>{const li=document.createElement("li");li.textContent=t;ol.appendChild(li)});el.appendChild(ol);const p=document.createElement("p");p.style.color="#f3c7a2";p.textContent=tip;el.appendChild(p);}
+document.getElementById("buscar").addEventListener("click",()=>query(document.getElementById("busca").value));
+document.getElementById("busca").addEventListener("keydown",e=>{if(e.key==="Enter")query(e.target.value)});
+document.querySelectorAll("[data-query]").forEach(x=>x.addEventListener("click",()=>{document.getElementById("busca").value=x.dataset.query;query(x.dataset.query)}));
+document.getElementById("meta-demo").addEventListener("click",()=>document.getElementById("meta-msg").textContent="Na versão real, o painel gerará automaticamente o acompanhamento visual atualizado. Aqui os valores são fictícios.");
+</script></body></html>
